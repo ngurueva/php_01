@@ -1,0 +1,39 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+
+    <h1>Поиск</h1>
+    <hr>
+
+    <form action="" class="row g-3">
+        <div class="col-4">
+            <label class="form-label">Тип</label>
+            <select class="form-control" name="type">
+                {% for type in types %}
+                    <option value="{{ type.name }}">{{ type.name }}</option>
+                {% endfor %}
+                <option value="Все">Все</option>
+            </select>
+        </div>
+        <div class="col-4">
+            <label class="form-label">Название</label>
+            <input type="text" class="form-control" name="title">
+        </div>
+        <div class="col-4">
+            <label class="form-label">Описание</label>
+            <input type="text" class="form-control" name="description">
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Найти</button>
+        </div>
+    </form>
+
+    {% for object in objects %}
+        <div class="col" style="margin-top: 10px;">
+            <a type="text" class="form-control" href="/south_pole_objects/{{object.id}}"> 
+                {{ object.title }}
+            </a>
+        </div>
+	{% endfor %}
+
+{% endblock %}

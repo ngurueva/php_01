@@ -1,0 +1,37 @@
+{% extends "__layout.twig" %}
+{% import  'macro.twig' as macro %}
+
+{% block content %}
+
+  <h1>{{title}}</h1>
+  <div>{{description}}</div>
+
+  {# Сообщение из сессии: {{my_session_message}}
+  <br>
+  Последние сообщения: <br>
+  {% for m in massages %}
+    {{m}}<br>
+  {% endfor %} #}
+<hr>
+
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a href="/south_pole_objects/{{id}}?show=image" class="nav-link" >
+        Картинка
+      </a>
+      </li>
+      <li>
+      <a href="/south_pole_objects/{{id}}?show=info" class="nav-link" >
+        Описание
+      </a>
+    </li>
+  </ul>
+
+  <div class="border" style="padding: 20px; margin-top: 20px">  
+    {% block objectContent %}
+      <img src="{{ image }}" style="width: 300px;"/>
+      <div> {{ info }} </div>
+    {% endblock %}
+  </div>
+
+{% endblock %}
